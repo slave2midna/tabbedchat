@@ -1,20 +1,10 @@
 import { registerSettings } from './settings.js';
 
 let currentTab = "ic";
-let salonEnabled = false;
 let turndown = undefined;
 
 function isMessageTypeVisible(messageType) {
 
-    if (salonEnabled) {
-        switch (messageType) {
-            case CONST.CHAT_MESSAGE_STYLES.OTHER:
-                messageType = CONST.CHAT_MESSAGE_STYLES.IC;
-                break;
-            case CONST.CHAT_MESSAGE_STYLES.WHISPER:
-                return false;
-        }
-    }
     switch (currentTab) {
         case "rolls":
             switch (messageType) {
@@ -167,15 +157,6 @@ Hooks.on("renderChatMessage", (chatMessage, html, data) => {
         }
     }
 
-    if (salonEnabled && chatMessage.style == CONST.CHAT_MESSAGE_STYLES.ROLL) {
-        if (!html.hasClass('gm-roll-hidden')) {
-            html.css("display", "list-item");
-        }
-        return;
-    }
-
-    if (salonEnabled && chatMessage.style == CONST.CHAT_MESSAGE_STYLES.WHISPER) return;
-
     if (currentTab == "rolls") {
         if (chatMessage.style == CONST.CHAT_MESSAGE_STYLES.OTHER && sceneMatches) {
             html.css("display", "list-item");
@@ -253,7 +234,6 @@ Hooks.on("createChatMessage", (chatMessage, content) => {
             }
         }
     } else {
-        if (salonEnabled && chatMessage.style == CONST.CHAT_MESSAGE_STYLES.WHISPER && !game.settings.get("tabbed-chatlog", "icWhispers")) return;
 
         if (currentTab != "ooc") {
             if (game.settings.get("tabbed-chatlog", "autoNavigate")) {
