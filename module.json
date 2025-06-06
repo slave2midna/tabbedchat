@@ -20,6 +20,7 @@
     }
   ],
   "esmodules": [
+    "scripts/settings.js",
     "scripts/tabbed-chatlog.js"
   ],
   "scripts": [],
