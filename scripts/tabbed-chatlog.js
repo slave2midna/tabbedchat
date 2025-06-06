@@ -127,9 +127,9 @@ Hooks.on("renderChatLog", async function (chatLog, html, user) {
                     setClassVisibility($(".type3").not(".scenespecific"), isMessageTypeVisible(CONST.CHAT_MESSAGE_STYLES.EMOTE));
                     setClassVisibility($(".type3").filter(".scene" + game.user.viewedScene), isMessageTypeVisible(CONST.CHAT_MESSAGE_STYLES.EMOTE));
                     setClassVisibility($(".type4"), isMessageTypeVisible(CONST.CHAT_MESSAGE_STYLES.WHISPER));
-					setClassVisibility($(".type5").filter(".scenespecific"), false);
-					setClassVisibility($(".type5").filter(".gm-roll-hidden"), false);
-					setClassVisibility($(".type5").filter(".scene" + game.user.viewedScene), isMessageTypeVisible(CONST.CHAT_MESSAGE_STYLES.ROLL));
+		    setClassVisibility($(".type5").filter(".scenespecific"), false);
+		    setClassVisibility($(".type5").filter(".gm-roll-hidden"), false);
+		    setClassVisibility($(".type5").filter(".scene" + game.user.viewedScene), isMessageTypeVisible(CONST.CHAT_MESSAGE_STYLES.ROLL));
                     setClassVisibility($(".type5").not(".scenespecific").not(".gm-roll-hidden"), isMessageTypeVisible(CONST.CHAT_MESSAGE_STYLES.ROLL));
 
                     $("#" + tab + "Notification").hide();
