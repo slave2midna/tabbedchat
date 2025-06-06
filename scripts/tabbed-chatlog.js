@@ -250,19 +250,21 @@ Hooks.on("createChatMessage", (chatMessage, content) => {
 Hooks.on("preCreateChatMessage", (chatMessage, content) => {
 
     if (game.settings.get('tabbed-chatlog', 'icChatInOoc')) {
-        if (currentTab == "ooc") {
-            if (chatMessage.style == CONST.CHAT_MESSAGE_STYLES.IC) {
-                chatMessage.updateSource({
-  		 type: CONST.CHAT_MESSAGE_STYLES.OOC,
-  		 speaker: null
-		});
-		chatMessage.style = CONST.CHAT_MESSAGE_STYLES.OOC;
-		content.type = CONST.CHAT_MESSAGE_STYLES.OOC;
-		delete content.speaker;
-                console.log(chatMessage);
-            }
+    if (currentTab == "ooc") {
+        if (chatMessage.style == CONST.CHAT_MESSAGE_STYLES.IC) {
+            chatMessage.updateSource({
+                type: CONST.CHAT_MESSAGE_STYLES.OOC,
+                speaker: null
+            });
+            chatMessage.style = CONST.CHAT_MESSAGE_STYLES.OOC;
+            content.type = CONST.CHAT_MESSAGE_STYLES.OOC;
+            delete content.speaker;
+            delete chatMessage.data.speaker;
+            delete chatMessage.data._source.speaker;
+            console.log(chatMessage);
         }
     }
+}
 
     if (chatMessage.style == CONST.CHAT_MESSAGE_STYLES.OTHER || chatMessage.style == CONST.CHAT_MESSAGE_STYLES.ROLL) {
 
