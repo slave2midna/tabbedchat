@@ -1,3 +1,5 @@
+import { registerSettings } from './settings.js';
+
 let currentTab = "ic";
 let salonEnabled = false;
 let turndown = undefined;
