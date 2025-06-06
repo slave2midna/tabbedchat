@@ -291,8 +291,6 @@ Hooks.on("preCreateChatMessage", (chatMessage, content) => {
                 name = speaker.alias;
             }
 
-            const img = await FilePicker.browse("public", path).then(...);
-
             if (!chatMessage.whisper?.length) {
                 let message = chatMessage.content;
                 if (game.modules.get("polyglot")?.active) {
